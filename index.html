@@ -90,13 +90,34 @@ footer{border-top:1px solid var(--line);margin-top:52px;padding-top:18px;color:v
 .key{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:13px;color:var(--mut)}.key u{display:inline-block;width:10px;height:10px;border-radius:50%;margin-inline-end:5px}
 .refs{padding-inline-start:20px;font-size:14px}
 .flow{list-style:none;margin:0;padding:0}
-.flow li{display:grid;grid-template-columns:40px 1fr auto;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line)}
+.flow li{display:grid;grid-template-columns:40px 64px 1fr auto;gap:14px;align-items:start;padding:14px 0;border-bottom:1px solid var(--line)}
 .flow .n{width:36px;height:36px;border-radius:50%;background:var(--acc);color:var(--on);display:grid;place-items:center;font-weight:700}
 .flow b{display:block}.flow small{color:var(--mut);font-weight:400}.flow li span{color:var(--mut);font-size:15px}.flow .st{display:block;color:var(--iod);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em}
 .flow button{padding:5px 12px;font-size:13px;white-space:nowrap}
-@media(max-width:600px){.flow li{grid-template-columns:40px 1fr}.flow button{grid-column:2;justify-self:start}.hint{display:none}.steps button{width:30px;height:30px}.sb button{padding:5px 10px;font-size:13px}}
+@media(max-width:600px){.flow li{grid-template-columns:40px 64px 1fr}.flow button{grid-column:3;justify-self:start}.hint{display:none}.steps button{width:30px;height:30px}.sb button{padding:5px 10px;font-size:13px}}
 #cv2,#cv4{display:block;width:100%;height:320px;touch-action:none;cursor:grab}
 .qh{font-size:20px;margin:36px 0 6px;font-weight:700}
+:root{--bg:#FAFAF8;--line:#E4E4DE}
+header{margin:0;padding:30px 0 6px;background:none;color:var(--ink);border-radius:0}
+header h1{color:var(--ink)}header .lead{color:var(--mut)}
+.hv,.facts,.sug{display:none!important}
+header>h1,header>.lead{max-width:760px!important}
+h2{margin:34px 0 6px}h2:before{display:none}
+.search{max-width:720px;margin:18px 0 4px}
+.sec p{max-width:760px}.how{margin:0;padding-inline-start:20px;max-width:760px}.how li{margin:0 0 8px}
+.toc{grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.toc a{border:1px solid var(--line);color:var(--ink);background:var(--pan)}.toc a:hover,.toc a:focus-visible{border-color:var(--acc);background:var(--pan)}
+.toc b{background:none;color:var(--acc);border:1.5px solid var(--acc)}.toc em{color:var(--mut)}
+.view{display:none}.view.on{display:block}
+.pic{color:var(--acc);position:relative;width:56px;height:56px}
+.ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid var(--line);background:var(--pan)}.ti{position:relative;width:40px;height:40px;margin:0 auto}
+.big{display:block;max-width:360px;width:100%;margin-top:10px;border-radius:8px;border:1px solid var(--line)}.pic svg{width:56px;height:56px;display:block}
+.tu{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;align-items:flex-end}.tu span{flex-basis:100%;font-size:12px;font-weight:600;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+.tu figure{margin:0;width:78px;text-align:center;font-size:11px;color:var(--mut);line-height:1.25}.tu svg{width:40px;height:40px;color:var(--acc)}
+.rsn{margin:12px 0 0;font-size:14px}.rs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin-top:8px}
+.rs>div{border:1px solid var(--line);padding:8px 10px;border-radius:6px;font-size:13px;line-height:1.45;color:var(--ink)}.rs svg{width:100%;height:76px;display:block;margin-bottom:6px}.rs b{display:block}
+.pg{display:flex;justify-content:space-between;gap:12px;margin:48px 0 0;padding-top:18px;border-top:1px solid var(--line)}.pg a{color:var(--acc);font-weight:600;text-decoration:none}
+@media print{.view{display:block!important}.pg{display:none}}
 .ck{list-style:none;margin:0;padding:0}.ck label{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line);cursor:pointer}.ck input{margin-top:5px;accent-color:var(--acc);width:18px;height:18px;flex:none}
 .edu{display:grid;gap:26px;grid-template-columns:1fr;margin-bottom:8px}@media(min-width:820px){.edu{grid-template-columns:1fr 1fr}}.edu h3{font-size:18px;margin:0 0 8px}.edu ul{margin:0;padding-inline-start:20px}.edu li{margin:0 0 6px;font-size:15px}
 .sb{position:sticky;top:calc(env(safe-area-inset-top,0px) + 46px);z-index:4;background:var(--pan);display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:6px 0 10px;border-bottom:1px solid var(--line);margin:0 0 10px}
@@ -113,15 +134,17 @@ footer{border-top:1px solid var(--line);margin-top:52px;padding-top:18px;color:v
 </style>
 </head>
 <body>
-<nav><span class='brand'><svg width='22' height='22' viewBox='0 0 22 22' aria-hidden='true'><ellipse cx='11' cy='11' rx='10' ry='7' fill='#F0C9BC' stroke='#B9650F' stroke-width='2'/><line x1='11' y1='5' x2='11' y2='17' stroke='#B5766A' stroke-dasharray='2 2'/></svg>Sheep Castration Guide</span><a href="#steps">Procedure</a><a href="#anatomy">Anatomy</a><a href="#tools">Instruments</a><a href="#compare">Comparison</a><a href="#aftercare">Aftercare</a><a href="#quiz">Quiz</a><a href="#educators">For educators</a><a href="#refs">References</a><a href="#" id="pb">Print summary</a></nav>
+<nav><span class='brand'><svg width='22' height='22' viewBox='0 0 22 22' aria-hidden='true'><ellipse cx='11' cy='11' rx='10' ry='7' fill='#F0C9BC' stroke='#B9650F' stroke-width='2'/><line x1='11' y1='5' x2='11' y2='17' stroke='#B5766A' stroke-dasharray='2 2'/></svg>Sheep Castration Guide</span><a href="#home">Home</a><a href="#steps">Procedure</a><a href="#anatomy">Anatomy</a><a href="#tools">Instruments</a><a href="#compare">Comparison</a><a href="#aftercare">Aftercare</a><a href="#quiz">Quiz</a><a href="#educators">For educators</a><a href="#refs">References</a><a href="#" id="pb">Print summary</a></nav>
 <main>
-<header>
+<header id='home'>
 <svg class='hv' viewBox='0 0 220 170' aria-hidden='true'><ellipse cx='110' cy='95' rx='100' ry='62' fill='#F0C9BC' stroke='#B5766A' stroke-width='2'/><ellipse cx='110' cy='95' rx='100' ry='62' fill='none' stroke='#C9791B' stroke-width='6'/><line x1='110' y1='48' x2='110' y2='142' stroke='#B5766A' stroke-dasharray='4 4'/><circle cx='62' cy='95' r='17' fill='#E9B9AC' stroke='#A8665A'/><circle cx='62' cy='95' r='3.5' fill='#FFF3D6'/><circle cx='55' cy='88' r='2.8' fill='#C62828'/><circle cx='69' cy='89' r='2.6' fill='#3F6FB5'/><ellipse cx='158' cy='95' rx='3' ry='17' fill='#E9B9AC' stroke='#A8665A'/><rect x='140' y='55' width='14' height='80' rx='3' fill='#5B6670'/><rect x='162' y='55' width='14' height='80' rx='3' fill='#5B6670'/><rect x='143' y='8' width='8' height='47' fill='#8B96A0'/><rect x='165' y='8' width='8' height='47' fill='#8B96A0'/></svg>
 <h1>Sheep castration guide: closed castration with the Burdizzo</h1>
 <p class="lead">A bloodless technique: the elements of the spermatic cord are crushed through intact skin, so the testis atrophies without any open wound. A study guide for Special Surgery before hands-on training.</p>
 <ul class="facts"><li>No skin wound</li><li>Lower risk of fly strike and infection</li><li>Breeding and aggression control</li><li>Improved meat quality</li></ul>
 <div class="search" role="search"><label for="q" class="sr">Search the guide</label><input id="q" type="search" placeholder="Search sheep castration: Burdizzo, septum, tetanus (press /)" autocomplete="off"><div class="sug" id="sg"></div><div id="res" class="res" hidden></div></div>
-<p class='toch'>Contents</p>
+<div class='sec'><h2>Introduction</h2><p>This platform teaches closed castration in sheep with the Burdizzo. It brings together the animated procedure, 2D and 3D anatomy, the instruments in order of use, the outcome over time, aftercare, quizzes and a reference list.</p><p>It is written for veterinary students, clinical teachers and practising veterinarians. It is educational material: practise under supervision and follow local animal welfare law.</p></div>
+<div class='sec'><h2>How to use this platform</h2><ol class='how'><li><b>Pick a part.</b> Use the menu at the top or the Contents below. Each part opens on its own page.</li><li><b>Follow the procedure.</b> In Procedure, use the numbered steps, Back, Next or Autoplay. Switch between 2D and 3D and drag the model to rotate it.</li><li><b>Explore the anatomy.</b> Select a layer, or peel the layers in 3D.</li><li><b>Search.</b> Type a word such as septum or tetanus in the search box and pick a result. Press / to jump to the search box.</li><li><b>Test yourself.</b> Take the quizzes, then check the references.</li></ol></div>
+<h2>Contents</h2>
 <div class='toc' role='navigation' aria-label='Contents'>
 <a href='#steps'><b>1</b><span><strong>Procedure</strong><em>Six animated steps, 2D and 3D</em></span></a>
 <a href='#anatomy'><b>2</b><span><strong>Anatomy</strong><em>Scrotal and testis layers, 2D and 3D</em></span></a>
@@ -265,6 +288,8 @@ footer{border-top:1px solid var(--line);margin-top:52px;padding-top:18px;color:v
 <li>Castration in small ruminants (chapter, University of Minnesota Open Library): emasculatome complications. <a href="https://open.lib.umn.edu/app/uploads/sites/208/2018/11/sm-rumin-castration-web-doc.pdf" target="_blank" rel="noopener">PDF</a></li>
 <li>Teagasc. Castration best practice (cattle): each cord crushed twice, the second crush below the first, about 10 seconds each. <a href="https://teagasc.ie/news--events/daily-archive/castration-best-practice/" target="_blank" rel="noopener">teagasc.ie</a></li>
 <li>Review of castration methods and pain responses, <i>Taylor &amp; Francis</i> 2023. <a href="https://informahealthcare.com/doi/abs/10.1080/09712119.2023.2273270" target="_blank" rel="noopener">doi:10.1080/09712119.2023.2273270</a></li>
+<li>University of Bristol Vet School clinical skills booklets: How to turn a sheep; Lamb castration. <a href="https://www.bristol.ac.uk/media-library/sites/vetscience/documents/clinical-skills/How_to_Turn_a_Sheep.pdf" target="_blank" rel="noopener">Turning a sheep (PDF)</a> and <a href="https://www.bristol.ac.uk/media-library/sites/vetscience/documents/clinical-skills/Lamb_Castration.pdf" target="_blank" rel="noopener">Lamb castration (PDF)</a></li>
+<li>Sheep 101. Handling sheep and lambs: tipping, halters and restraining devices. <a href="https://sheep101.info/201/handling.html" target="_blank" rel="noopener">sheep101.info</a></li>
 </ol>
 <p class="sub">Teaching conventions rather than sourced facts: staggering the two crush levels, and the illustrative timing on the outcome slider. Several sources are cattle data. One chapter above regards the emasculatome as a very inhumane method, so use analgesia and follow local welfare law.</p>
 </section>
@@ -285,7 +310,7 @@ let i=0,iv,ap=null;
 const el={iod:$("iod"),hl:$("hl"),jl:$("jl"),jr:$("jr"),cl:$("cl"),cr:$("cr"),tm:$("tm"),ok:$("ok")};
 $("dt").innerHTML=ST.map((_,k)=>`<button data-k="${k}" title="${ST[k].t}" aria-label="Go to step ${k+1}: ${ST[k].t}">${k+1}</button>`).join("");
 function show(n){i=n;const s=ST[n],v=s.v;
-$("tg").textContent=s.g;$("tt").textContent=s.t;$("dd").textContent=s.d;$("wy").textContent=s.w;
+$("tg").textContent=s.g;$("tt").textContent=s.t;$("dd").innerHTML=s.d+(s.x||"")+(window.tu?tu(n):"");$("wy").textContent=s.w;
 el.iod.style.opacity=v.iod;el.hl.style.opacity=v.hl;el.ok.style.opacity=v.ok;el.tm.style.opacity=v.tm;
 el.jl.style.opacity=v.jo;el.jr.style.opacity=v.jo;
 el.jl.style.transform=`translateX(${v.jl}px)`;el.jr.style.transform=`translateX(${v.jr}px)`;
@@ -338,9 +363,9 @@ $("pl").innerHTML=ST.map(s=>`<li><b>${s.t}.</b> ${s.d}</li>`).join("");
 $("pb").onclick=e=>{e.preventDefault();try{window.print()}catch(x){}};
 
 const IDX=[],K="sheep castration burdizzo";
-const jump=id=>document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"});
-const flash=n=>{n.scrollIntoView({behavior:"smooth",block:"center"});n.classList.add("hit");setTimeout(()=>n.classList.remove("hit"),2200)};
-IDX.push({t:"Overview",x:"Closed castration with the Burdizzo in sheep: a bloodless technique",c:"Guide",k:K,f:()=>window.scrollTo({top:0,behavior:"smooth"})});
+const jump=id=>{setView(id)};
+const flash=n=>{const v=n.closest('.view');if(v)setView(v.id);setTimeout(()=>{n.scrollIntoView({behavior:"smooth",block:"center"});n.classList.add("hit");setTimeout(()=>n.classList.remove("hit"),2200)},80)};
+IDX.push({t:"Overview",x:"Closed castration with the Burdizzo in sheep: a bloodless technique",c:"Guide",k:K,f:()=>setView('home')});
 ST.forEach((s,n)=>IDX.push({t:s.t,x:s.d+" "+s.w,c:"Procedure, "+s.g,k:K,f:()=>{go(n);jump("steps")}}));
 L.forEach((l,n)=>IDX.push({t:l[0],x:l[1]+". "+l[3],c:"Anatomy",k:K+" scrotum testis",f:()=>{pick(n);jump("anatomy")}}));
 [["#tools li","b","Instruments"],["#compare tbody tr:not(:first-child)","b","Comparison"],["#compare .warn li","","Complications"],["#aftercare .tl li","b","Aftercare"]].forEach(([s,t,c])=>document.querySelectorAll(s).forEach(n=>IDX.push({t:t?n.querySelector(t).textContent:n.textContent.split(":")[0],x:n.textContent,c:c,k:K,f:()=>flash(n)})));
@@ -391,7 +416,7 @@ const ZN=v=>v<25?'too high':v>75?'too low':'recommended zone';
 function lvtxt(){const a=+$('s1').value,b=+$('s2').value;$('lv').textContent='Cord 1: '+ZN(a)+'. Cord 2: '+ZN(b)+'. '+(Math.abs(a-b)<8?'Same level on both cords: avoid, it can compromise scrotal skin circulation.':'Staggered levels, a commonly taught practice.')}
 const OT=[['Day 0','Crush applied. Cord elements are crushed under intact skin and blood flow to the testis is interrupted (Refs 2, 7).'],['Day 2','Swelling and pain at the crush site are common in the first days. The skin is intact, so wound infection and fly strike seldom occur (Refs 3, 6).'],['Day 7','Watch for extreme scrotal swelling, scrotal sloughing or tetanus, the recognised complications (Ref 5). Ischemia continues in the testis.'],['Day 14','Continued ischemia causes coagulative necrosis, then fibrosis, and the testis begins to shrink (illustrative timing) (Ref 2).'],['Week 4','Progressive atrophy: the testis is smaller and firmer on palpation. Tissue may survive if the crush was incomplete (Refs 1, 3).'],['Week 8+','Expected end point is a small sclerotic remnant (mostly fibrous tissue in calves, Ref 4). In lambs, most testes still showed incomplete involution of the parenchyma at slaughter, so do not assume sterility (Ref 1).']];
 const VI=['Viable','Ischemic','Ischemic, degenerating','Necrosis, then fibrosis','Atrophic','Fibrotic remnant (variable)'];
-function ocome(){$('sol').textContent=OT[OUT][0]+': '+VI[OUT];$('oc').innerHTML='<b>'+OT[OUT][0]+' | Testicular viability: '+VI[OUT]+'</b>'+OT[OUT][1]+'<i>Illustrative model. Timing varies between animals.</i>';const s=ST[step];$('cap').innerHTML='<b>'+s.g+': '+s.t+'</b>'+s.d+'<i>'+s.w+'</i>'}
+function ocome(){$('sol').textContent=OT[OUT][0]+': '+VI[OUT];$('oc').innerHTML='<b>'+OT[OUT][0]+' | Testicular viability: '+VI[OUT]+'</b>'+OT[OUT][1]+'<i>Illustrative model. Timing varies between animals.</i>';const s=ST[step];$('cap').innerHTML='<b>'+s.g+': '+s.t+'</b>'+s.d+'<i>'+s.w+'</i>'+(s.x||'')+(window.tu?tu(step):'')}
 const FA=[1,1.08,1.12,.95,.7,.45],RA=[0,.5,.7,.3,0,0],pw=(A,x)=>{const i=Math.min(4,Math.floor(x)),t=x-i;return A[i]+(A[i+1]-A[i])*t},ofn=x=>pw(FA,x),rd=x=>pw(RA,x),CR=new T.Color(0xD07C70),P0=new T.Color(0xF3D2C8),P1=new T.Color(0x7A5F58);
 $('s1').oninput=$('s2').oninput=()=>apply();document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{AP=+b.dataset.a;apply();document.querySelectorAll('[data-a]').forEach(x=>x.classList.toggle('p',x==b))});$('so').oninput=e=>{OUT=+e.target.value;apply()};
 $('rv').onclick=()=>document.querySelector('[data-v=rear]').click();
@@ -465,6 +490,30 @@ cv.onpointerup=()=>{drag=null};
 function fr(){const r=cv.getBoundingClientRect();if(r.bottom>0&&r.top<innerHeight){const w=cv.parentNode.clientWidth;if(w&&w!=lw){lw=w;ren.setSize(w,320,false);cam.aspect=w/320;cam.updateProjectionMatrix()}
 if(!drag)t+=.01;G.rotation.set(xw,Math.sin(t)*.6+yw,0);cam.position.set(0,0,9);ren.render(sc,cam)}requestAnimationFrame(fr)}
 start();fr();
+})();
+(function(){
+const V=['home','steps','anatomy','tools','compare','aftercare','quiz','educators','refs'],TT={home:'Home',steps:'Procedure',anatomy:'Anatomy',tools:'Instruments',compare:'Comparison',aftercare:'Aftercare',quiz:'Quiz',educators:'For educators',refs:'References'},M=document.querySelector('main');
+document.querySelectorAll('main>header,main>section:not(.po)').forEach(v=>v.classList.add('view'));
+M.prepend(document.querySelector('.search'));
+V.forEach((id,n)=>{if(!n)return;const p=V[n-1],x=V[n+1];$(id).insertAdjacentHTML('beforeend',`<div class='pg'><a href='#${p}'>&larr; ${TT[p]}</a>${x?`<a href='#${x}'>${TT[x]} &rarr;</a>`:'<span></span>'}</div>`)});
+window.setView=function(id){if(!V.includes(id))id='home';document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==id));document.querySelectorAll('nav a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')=='#'+id));try{if(location.hash!='#'+id)location.hash=id}catch(e){}scrollTo(0,0);dispatchEvent(new Event('resize'))};
+addEventListener('hashchange',()=>setView(location.hash.slice(1)));
+const b=document.querySelector('.brand');b.style.cursor='pointer';b.onclick=()=>setView('home');
+const SV=b=>`<svg viewBox='0 0 64 64' aria-hidden='true' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>${b}</svg>`;
+const B5=SV(`<path d='M32 44L18 6M32 44L46 6'/><rect x='22' y='44' width='9' height='14' rx='1'/><rect x='33' y='44' width='9' height='14' rx='1'/>`);
+const IC=[SV(`<rect x='6' y='30' width='28' height='10' rx='2'/><path d='M34 35h14M6 35H2M14 30v-7h12v7'/><rect x='44' y='10' width='14' height='22' rx='2'/><path d='M44 18h14'/>`),SV(`<ellipse cx='34' cy='38' rx='13' ry='16' transform='rotate(-12 34 38)'/><circle cx='40' cy='16' r='7'/><path d='M30 52l-10 6M40 53l12 5M24 38l-12 4'/><path d='M8 46c6 6 16 8 24 4' stroke='#C9791B'/>`),SV(`<rect x='14' y='10' width='34' height='46' rx='3'/><path d='M24 6h14v8H24zM22 26h20M22 34h20M22 42h12'/>`),SV(`<path d='M26 8h12v8l6 8v30a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3V24l6-8z'/><path d='M20 38h24v16a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z' fill='#C9791B' stroke='none'/>`),SV(`<rect x='20' y='16' width='24' height='38' rx='3'/><path d='M24 16V8h16v8M20 30h24'/><path d='M20 30h24v21a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z' fill='currentColor' opacity='.25' stroke='none'/>`),B5,B5];
+const PH=['tetanus-vaccine.jpg','restraint.jpg','gloves-record-sheet.jpg','antiseptic.jpg','local-anesthetic.jpg','burdizzo.jpg','burdizzo.jpg'],ph=k=>`<img class='ph' src='images/${PH[k]}' alt='${NM[k]}' loading='lazy' onerror='this.remove()'>`;
+const NM=['Tetanus vaccine','Restraint','Gloves and record sheet','Antiseptic','Local anesthetic and analgesic','Burdizzo','Burdizzo'],TS=[[1,2],[3,2],[2,4],[5],[5],[5]];
+window.tu=n=>`<div class='tu'><span>Tools in this step</span>${TS[n].map(k=>`<figure><div class='ti'>${IC[k]}${ph(k)}</div><figcaption>${NM[k]}</figcaption></figure>`).join('')}</div>`;
+document.querySelectorAll('.flow li').forEach((li,k)=>li.querySelector('.n').insertAdjacentHTML('afterend',`<div class='pic'>${IC[k]}${ph(k)}</div>`));
+const bg=document.querySelector('.flow li:nth-child(6)>div:nth-child(3)');if(bg)bg.insertAdjacentHTML('beforeend',`<img class='big' src='images/burdizzo.jpg' alt='Burdizzo bloodless castrator' loading='lazy' onerror='this.remove()'>`);
+const RW=`<svg viewBox='0 0 120 80' aria-hidden='true'>`;
+ST[0].x=`<p class='rsn'><b>How restraint is done.</b> Choose the method by size and keep handling calm and brief. Never lift the animal by the wool.</p><div class='rs'>
+<div>${RW}<circle cx='26' cy='14' r='8' fill='#D9B8A6'/><rect x='14' y='24' width='24' height='40' rx='9' fill='#5B7D78'/><ellipse cx='58' cy='46' rx='13' ry='19' fill='#EDE7D6' stroke='#8C8672' transform='rotate(-14 58 46)'/><circle cx='66' cy='22' r='7' fill='#EDE7D6' stroke='#8C8672'/><path d='M62 60l24 4M64 52l24-6' stroke='#8C8672' stroke-width='4' stroke-linecap='round'/></svg><b>Lamb held sitting</b>The assistant holds the lamb on its rump with its back against the chest or lap, head and shoulders tucked under one arm, hind legs held apart so the scrotum faces the operator (Ref 8).</div>
+<div>${RW}<path d='M18 64v14M28 64v14' stroke='#5B7D78' stroke-width='8'/><rect x='8' y='6' width='22' height='58' rx='9' fill='#5B7D78'/><ellipse cx='58' cy='46' rx='17' ry='22' fill='#EDE7D6' stroke='#8C8672' transform='rotate(-20 58 46)'/><circle cx='70' cy='20' r='8' fill='#EDE7D6' stroke='#8C8672'/><path d='M64 62l30 4M68 54l30-6' stroke='#8C8672' stroke-width='5' stroke-linecap='round'/></svg><b>Adult sheep: tipped onto the rump</b>One hand under the jaw, one over the rump. Turn the head away and rotate the body until the animal sits on its rump with its back against your legs. Large rams may need two people (Refs 8, 9).</div>
+<div>${RW}<path d='M4 24h112M4 34h112' stroke='#8C8672' stroke-width='3'/><ellipse cx='60' cy='48' rx='28' ry='14' fill='#EDE7D6' stroke='#8C8672'/><circle cx='94' cy='40' r='7' fill='#EDE7D6' stroke='#8C8672'/><path d='M42 58v16M54 60v16M70 60v16M80 58v16' stroke='#8C8672' stroke-width='4' stroke-linecap='round'/><path d='M94 40l14-8' stroke='#C9791B' stroke-width='2'/></svg><b>Standing: halter, rail or crush</b>When facilities allow, a halter with the animal held against a rail or in a crush keeps it standing, with an assistant at the head (Ref 9).</div></div><p class='rsn'>Schematic drawings, not to scale. Keep the animal calm, supported and breathing freely.</p>`;
+show(i);
+setView(location.hash.slice(1));
 })();
 </script>
 </body>
