@@ -98,6 +98,23 @@ footer{border-top:1px solid var(--line);margin-top:52px;padding-top:18px;color:v
 #cv2,#cv4,#cv5{display:block;width:100%;height:320px;touch-action:none;cursor:grab}
 .cl{display:grid;grid-template-columns:repeat(3,1fr);text-align:center;font-size:13px;font-weight:600;color:var(--mut);margin-top:4px}
 .media{margin:36px 0 0;padding:12px 14px;border:1px solid var(--line);border-radius:8px;font-size:14px;line-height:1.7}.media a{color:var(--acc)}
+#model .gal figure{position:relative;overflow:hidden;border-radius:10px;cursor:zoom-in}
+#model .gal img,#model .gal video{transition:transform .5s}
+#model .gal figure:hover img,#model .gal figure:hover video{transform:scale(1.03)}
+#model .gal figure:after{content:'Click to enlarge';position:absolute;top:8px;inset-inline-end:8px;background:rgba(12,59,54,.85);color:#fff;font-size:12px;padding:3px 9px;border-radius:12px;opacity:0;transition:opacity .3s;pointer-events:none}
+#model .gal figure:hover:after,#model .gal figure:focus-visible:after{opacity:1}
+.mrev{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}.mrev.in{opacity:1;transform:none}
+.lb{position:fixed;inset:0;z-index:60;background:rgba(8,18,16,.94);display:none;flex-direction:column;align-items:center;gap:10px;padding:14px;color:#fff}.lb.on{display:flex}
+.lbt{display:flex;gap:14px;align-items:center;width:100%;max-width:900px}.lbt b{flex:1}.lbt button,.lbb button{border-color:#4CC3AE;color:#4CC3AE}.lbb button.p{background:#4CC3AE;color:#06201C}
+.lbm{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;width:100%;max-width:900px}.lbm img,.lbm video{max-width:100%;max-height:100%;border-radius:10px;object-fit:contain;animation:lbin .5s}
+@keyframes lbin{from{opacity:0;transform:scale(.97)}to{opacity:1;transform:none}}
+.lbc{margin:0;max-width:900px;text-align:center;font-size:14px;color:#D7EEE9}
+.lbp{width:100%;max-width:900px;height:3px;background:#2F6A62;border-radius:2px;overflow:hidden}.lbp i{display:block;height:100%;width:0;background:#E3A04A}
+.lbb{display:flex;gap:8px}
+.lbth{display:flex;gap:6px;overflow-x:auto;max-width:900px;width:100%;padding-bottom:4px}.lbth button{padding:0;width:54px;height:54px;flex:none;border-radius:8px;border:2px solid transparent;overflow:hidden;background:none}.lbth button.on{border-color:#E3A04A}.lbth img{width:100%;height:100%;object-fit:cover;display:block}
+@media(prefers-reduced-motion:reduce){.mrev{opacity:1;transform:none;transition:none}.lbm img,.lbm video{animation:none}}
+@media print{.lb{display:none!important}}
+.g8{display:flex;justify-content:space-between;align-items:center;gap:14px;width:100%;text-align:left;padding:16px 18px;border:1.5px solid var(--acc);border-radius:10px;background:var(--pan);color:var(--ink);margin:6px 0 18px;cursor:pointer;font-weight:400}.g8:hover{background:var(--bg)}.g8 b{display:block;font-size:20px}.g8 small{display:block;color:var(--mut);font-size:14px;line-height:1.4}.g8 i{font-style:normal;color:var(--acc);font-weight:600;font-size:14px}
 .ak{margin:12px 0 0;padding-inline-start:18px;font-size:13px;color:var(--mut)}.ak li{margin:0 0 4px}
 .gal{display:grid;gap:12px;align-content:start}.gal figure{margin:0}.gal img,.gal video{width:100%;max-height:420px;object-fit:contain;border-radius:8px;border:1px solid var(--line);display:block;background:#111}.gal figcaption{font-size:13px;color:var(--mut);margin-top:4px}
 
@@ -162,13 +179,15 @@ h2{margin:34px 0 6px}h2:before{display:none}
 <a href='#educators'><b>7</b><span><strong>For educators</strong><em>Outcomes, checklist, discussion</em></span></a>
 <a href='#refs'><b>8</b><span><strong>References</strong><em>Sources and evidence notes</em></span></a>
 </div>
+<div class='sec'><h2>Contact</h2><p>For any edit or advice, contact us on WhatsApp: <a href='https://wa.me/201151620464' target='_blank' rel='noopener' style='color:var(--acc);font-weight:600'>01151620464</a></p></div>
 </header>
 
 <section id="steps">
-<h2>The procedure, animated</h2>
-<p class="sub">Cross-section through the neck of the scrotum. Step through the procedure or play it automatically.</p>
+<h2>The procedures, animated</h2>
+<p class="sub">Three closed procedures: Burdizzo, rubber ring and combined. Choose one, then step through it or play it automatically. The Burdizzo has a 2D cross-section and a 3D model; the ring procedures are shown in 3D.</p>
 <div class="stage">
 <div class="scene">
+<div class='vt' id='pmt' role='group' aria-label='Choose the procedure'><button data-pm='0' class='p'>Burdizzo</button><button data-pm='1'>Rubber ring</button><button data-pm='2'>Combined ring + Burdizzo</button></div>
 <div class='sb'><button id='pv' aria-label='Previous step'>Back</button><button id='nx' class='p' aria-label='Next step'>Next</button><button id='ap' aria-pressed='false'>Autoplay</button><div class='steps' id='dt' role='group' aria-label='Jump to step'></div><p class='hint'>Click a numbered step to jump to it, or use Back and Next. Left and right arrow keys also work.</p></div>
 <div class='vt'><button id='v2' class='p'>2D section</button><button id='v3'>3D model</button></div>
 <div id='d3' hidden><div class='vc'><span>View</span><button data-v='rear' class='p'>Rear</button><button data-v='side'>Side</button><button data-v='top'>Close-up</button><button id='rv'>Reset view</button></div><p class='fb'>Approach: dorsal. The handles point dorsally and the jaws close from the cranial and caudal sides of the cord.</p><div class='vc'><label>Cord 1 level <input type='range' id='s1' min='0' max='100' value='35' aria-label='Burdizzo level on cord 1'></label><label>Cord 2 level <input type='range' id='s2' min='0' max='100' value='60' aria-label='Burdizzo level on cord 2'></label></div><canvas id='cv' role='img' aria-label='3D model of the hindquarters of a ram with the scrotum and Burdizzo. Drag to rotate.'></canvas><div id='cap' class='cap' aria-live='polite'></div><div class='vc' hidden><span>View</span><button data-v='rear' class='p'>Rear</button><button data-v='side'>Side</button><button data-v='top'>Close-up</button></div><div class='vc'><label>Time after castration <input type='range' id='so' min='0' max='5' value='0' aria-label='Time after castration'></label><b id='sol'></b></div><div id='oc' class='cap'></div><p id='lv' class='fb'></p><div class='key'><span><u style='background:#F3D2C8'></u>Testis</span><span><u style='background:#C9A27A'></u>Epididymis (head, body, tail)</span><span><u style='background:#8A6FA8'></u>Pampiniform plexus</span><span><u style='background:#FFF0C8'></u>Ductus deferens</span><span><u style='background:#B5594C'></u>Spermatic cord</span><span><u style='background:#E9B9AC'></u>Scrotal skin</span></div><p class='fb'>Drag to rotate. Stylised anatomical model, not to scale. Steps and the Burdizzo level follow the procedure panel.</p></div>
@@ -247,6 +266,12 @@ h2{margin:34px 0 6px}h2:before{display:none}
 <h2>Teaching model: sheep hindquarters</h2>
 <p class='sub'>A low-cost anatomical model of the ram's hindquarters and scrotal contents, built to rehearse positioning, cord isolation and Burdizzo placement before work on live animals. This page documents the materials, the build, and the anatomical purpose of each part.</p>
 
+<button id='g8b' class='g8' aria-expanded='false' aria-controls='g8'><span><b>Group 8</b><small>Faculty of Veterinary Medicine, Department of Surgery and Anesthesia, Cairo University</small></span><i>Open the model and its build flow</i></button>
+<div id='g8' hidden>
+<h3 class='qh'>Project team</h3>
+<p class='sub'>Group 8, Department of Surgery and Anesthesia, Faculty of Veterinary Medicine, Cairo University</p>
+<div class='tw'><table><tr><th style='text-align:right'>Student name</th><th>Code</th></tr><tr><td lang='ar' dir='rtl' style='text-align:right'>عمرو عبدالله السيد عبدالحكيم</td><td>11112032100427</td></tr><tr><td lang='ar' dir='rtl' style='text-align:right'>علاء علي عبدالمتجلي أحمد</td><td>11112032100472</td></tr><tr><td lang='ar' dir='rtl' style='text-align:right'>يوسف موريس عجيب إبراهيم</td><td>11112032100495</td></tr><tr><td lang='ar' dir='rtl' style='text-align:right'>نهاد عبدالله مهدي علي الدشوري</td><td>11112032100518</td></tr><tr><td lang='ar' dir='rtl' style='text-align:right'>جهاد هاشم محمد هاشم</td><td>11112032100519</td></tr><tr><td lang='ar' dir='rtl' style='text-align:right'>حسن عبد الحميد الحسيني عبد الحميد النجار</td><td>11112032100557</td></tr></table></div>
+<div class='vc'><button id='wk' class='p'>Play build walkthrough</button><span>Opens the photos and videos in order, step by step. You can also click any photo or video to enlarge it.</span></div>
 <h3 class='qh'>1. Materials and tools</h3>
 <div class='tw'><table><tr><th>Component</th><th>Materials</th><th>Function in the model</th></tr>
 <tr><td><b>Base and body</b></td><td>Wooden board, sponge blocks, glue, fabric, cotton</td><td>Stable base; abdominal and perineal mass; wool-like surface texture</td></tr>
@@ -312,6 +337,7 @@ h2{margin:34px 0 6px}h2:before{display:none}
 <li>Use the skill checklist in For educators to assess practice on the model.</li></ul></div>
 </div>
 <p class='sub'>Limits: the model has no real tissue elasticity, bleeding or animal behaviour, and it is not to scale. It supports positioning and technique rehearsal only.</p>
+</div>
 </section>
 
 <section id="compare">
@@ -512,17 +538,33 @@ const GL=new T.Group(),GR=new T.Group(),EM=M(0xC9A27A,{roughness:.5});GL.positio
 [[GL,1],[GR,-1]].forEach(([g,s])=>{add(S,EM,.2*s,-1,.42,g).scale.set(.2,.16,.18);add(new T.CylinderGeometry(.07,.07,1.45,12),EM,.28*s,-1.8,.5,g);add(S,EM,.2*s,-2.6,.4,g).scale.set(.22,.2,.2);add(new T.CylinderGeometry(.035,.035,3,8),M(0xFFF0C8),.3*s,-1.1,.35,g);add(new T.CylinderGeometry(.19,.19,.6,16),M(0x8A6FA8,{roughness:.6}),0,-.7,0,g)});
 [-1,1].forEach(s=>{add(new T.CylinderGeometry(.8,.55,4.4,20),M(0xEDE7D6),2.3*s,-.9,0);add(new T.CylinderGeometry(.22,.18,1.4,12),M(0xD9D2BE),2.2*s,-3.5,0);add(new T.BoxGeometry(.5,.3,.6),M(0x4A423A),2.2*s,-4.3,0)});
 add(new T.CylinderGeometry(.2,.14,1.6,12),M(0xE2DAC4),0,.4,1.35);
+const SL=new T.Group();G.add(SL);SL.add(pL,pR,tL,tR,GL,GR);
+const RG=add(new T.TorusGeometry(1.3,.1,12,40),M(0xC9791B),0,-.62,0,SL);RG.rotation.x=Math.PI/2;
+const BD=add(new T.BoxGeometry(2.7,.1,1.2),BM,0,-.42,0);BD.visible=false;
+const WD=add(new T.CylinderGeometry(1.2,1.2,.05,24),M(0xD9777A),0,-.5,0);WD.visible=false;
+const CJ=new T.Group();CJ.position.y=-.42;G.add(CJ);CJ.visible=false;
+[-1,1].forEach(s=>{[[2.8,.2,.3,0,0],[.12,3,.1,1.1,1.6],[.12,3,.1,-1.1,1.6]].forEach(a=>{const o=add(new T.BoxGeometry(a[0],a[1],a[2]),a[4]?st:dk,a[3],a[4],.5*s,CJ);o.userData.z=s})});
+const EL=new T.Group();G.add(EL);EL.visible=false;
+add(new T.CylinderGeometry(.06,.06,3.74,8),st,1.17,1.7,0,EL).rotation.z=-.43;add(new T.CylinderGeometry(.06,.06,3.74,8),st,-1.17,1.7,0,EL).rotation.z=.43;add(new T.CylinderGeometry(.08,.08,.5,8),dk,1.95,-.1,0,EL);add(new T.CylinderGeometry(.08,.08,.5,8),dk,-1.95,-.1,0,EL);
+const CD=new T.Color(0x4A3A3A);
 const C0=new T.Color(0xE9B9AC),C1=new T.Color(0xD9A441),VW={rear:[0,.08,9,-1.4],side:[1.5,.05,9,-1.4],top:[.3,.25,4.6,-.4]};
 const LT=['Too high: near the body wall, the cord is hard to isolate and other tissue may be caught.','Recommended: neck of the scrotum above the testis, cord isolated, septum outside the jaws.','Too low: close to the testis and epididymis, the crush may miss the cord or injure the testis.'];
-let step=0,lvl=1,run=false,drag=null;const tg={rx:VW.rear[1],ry:VW.rear[0],d:9,ty:-1.4},cu={};
-function apply(){const n=step,l2=lvl==2?1:lvl+1;tg.iod=n>0?1:0;tg.hl=n==0?1:0;tg.hc=n==2?1:0;tg.push=n>=2&&n<=4?1:0;tg.bo=n>=3&&n<=5?1:0;tg.gap=n==3?.45:.1;tg.bl=n>=4?1:0;tg.br=n>=5?1:0;tg.ll=Y1();tg.lr=Y2();tg.ly=n==5?Y2():Y1();if(OUT>0){tg.bo=0;tg.bl=1;tg.br=1;tg.push=0;tg.hl=0;tg.hc=0;tg.iod=0}tg.out=OUT;tg.rot=AP*1.5708;tg.x=n==5?.62:-.62-.25*tg.push;
-for(const k in tg)if(!(k in cu))cu[k]=tg[k];lvtxt();ocome()}
-const Y1=()=>.05-.7*$('s1').value/100,Y2=()=>.05-.7*$('s2').value/100;let OUT=0,AP=1;
+let step=0,lvl=1,run=false,drag=null;const tg={rx:VW.rear[1],ry:VW.rear[0],d:9,ty:-1.4,rg:0,ryy:-3.2,rsc:1.5,eo:0,ey:0,cb:0,cv:0,cgap:.5,fall:0,dk:0},cu={};
+function apply(){apply0();if(METH)apply2();else{tg.rg=0;tg.eo=0;tg.cb=0;tg.cv=0;tg.fall=0;tg.dk=0}lvtxt();ocome()}
+function apply2(){const n=step,c=METH==2;tg.hl=n==0?1:0;tg.hc=0;tg.push=0;tg.bo=0;tg.bl=0;tg.br=0;tg.iod=0;
+tg.rg=n>=1?1:0;tg.ryy=n<=2?-3.2:-.62;tg.rsc=(n<=2||(n==3&&!c))?1.5:1;tg.eo=((n>=1&&n<=2)||(n==3&&!c))?1:0;tg.ey=n>=4?-1.5:0;
+tg.cb=c&&n>=4?1:0;tg.cv=c&&n==4?1:0;tg.cgap=n==4?.1:.5;
+if(OUT>0){tg.rg=1;tg.ryy=-.62;tg.rsc=1;tg.eo=0;tg.ey=-1.5;tg.cb=c?1:0;tg.cv=0;tg.fall=[0,0,0,.2,1,1][OUT];tg.dk=[0,.35,.8,1,1,1][OUT]}else{tg.fall=0;tg.dk=0}}
+function apply0(){const n=step,l2=lvl==2?1:lvl+1;tg.iod=n>0?1:0;tg.hl=n==0?1:0;tg.hc=n==2?1:0;tg.push=n>=2&&n<=4?1:0;tg.bo=n>=3&&n<=5?1:0;tg.gap=n==3?.45:.1;tg.bl=n>=4?1:0;tg.br=n>=5?1:0;tg.ll=Y1();tg.lr=Y2();tg.ly=n==5?Y2():Y1();if(OUT>0){tg.bo=0;tg.bl=1;tg.br=1;tg.push=0;tg.hl=0;tg.hc=0;tg.iod=0}tg.out=OUT;tg.rot=AP*1.5708;tg.x=n==5?.62:-.62-.25*tg.push;
+for(const k in tg)if(!(k in cu))cu[k]=tg[k]}
+const Y1=()=>.05-.7*$('s1').value/100,Y2=()=>.05-.7*$('s2').value/100;let OUT=0,AP=1,METH=0;
 const ZN=v=>v<25?'too high':v>75?'too low':'recommended zone';
-function lvtxt(){const a=+$('s1').value,b=+$('s2').value;$('lv').textContent='Cord 1: '+ZN(a)+'. Cord 2: '+ZN(b)+'. '+(Math.abs(a-b)<8?'Same level on both cords: avoid, it can compromise scrotal skin circulation.':'Staggered levels, a commonly taught practice.')}
+function lvtxt(){if(METH){$('lv').textContent=METH==2?'Combined: the ring is placed first, then the clamp crushes the full width of the scrotal neck up to the outer edge of the ring (Ref 10).':'Rubber ring: both testes must lie entirely below the ring, and the teats must stay outside it (Ref 10).';return}const a=+$('s1').value,b=+$('s2').value;$('lv').textContent='Cord 1: '+ZN(a)+'. Cord 2: '+ZN(b)+'. '+(Math.abs(a-b)<8?'Same level on both cords: avoid, it can compromise scrotal skin circulation.':'Staggered levels, a commonly taught practice.')}
 const OT=[['Day 0','Crush applied. Cord elements are crushed under intact skin and blood flow to the testis is interrupted (Refs 2, 7).'],['Day 2','Swelling and pain at the crush site are common in the first days. The skin is intact, so wound infection and fly strike seldom occur (Refs 3, 6).'],['Day 7','Watch for extreme scrotal swelling, scrotal sloughing or tetanus, the recognised complications (Ref 5). Ischemia continues in the testis.'],['Day 14','Continued ischemia causes coagulative necrosis, then fibrosis, and the testis begins to shrink (illustrative timing) (Ref 2).'],['Week 4','Progressive atrophy: the testis is smaller and firmer on palpation. Tissue may survive if the crush was incomplete (Refs 1, 3).'],['Week 8+','Expected end point is a small sclerotic remnant (mostly fibrous tissue in calves, Ref 4). In lambs, most testes still showed incomplete involution of the parenchyma at slaughter, so do not assume sterility (Ref 1).']];
+const OTR=[['Day 0','Ring applied at the neck of the scrotum with both testes below it. The ring cuts off the blood supply (Ref 10).'],['Day 2','Tissue below the ring starts to die as the blood supply is lost. Pain-related behaviours are common (Ref 10).'],['Day 7','The tissue below the ring is dark and drying. Watch for pain, infection and tetanus (Refs 10, 11).'],['Day 14','Necrosis is evident and the scrotum starts to detach (Ref 3).'],['Week 4','The scrotum and testes have dropped off, and the wound is granulating (Refs 3, 10).'],['Week 8+','The wound continues to heal (illustrative). Do not transport castrated males until the wound has fully healed (Ref 10).']];
+const VIR=['Viable','Ischemic','Necrosis starting','Necrosis evident, detaching','Slough: fallen off','Healing wound'];
 const VI=['Viable','Ischemic','Ischemic, degenerating','Necrosis, then fibrosis','Atrophic','Fibrotic remnant (variable)'];
-function ocome(){$('sol').textContent=OT[OUT][0]+': '+VI[OUT];$('oc').innerHTML='<b>'+OT[OUT][0]+' | Testicular viability: '+VI[OUT]+'</b>'+OT[OUT][1]+'<i>Illustrative model. Timing varies between animals.</i>';const s=ST[step];$('cap').innerHTML='<b>'+s.g+': '+s.t+'</b>'+s.d+'<i>'+s.w+'</i>'+(s.x||'')+(window.tu?tu(step):'')}
+function ocome(){const OA=METH?OTR:OT,VA=METH?VIR:VI;$('sol').textContent=OA[OUT][0]+': '+VA[OUT];$('oc').innerHTML='<b>'+OA[OUT][0]+' | Testicular viability: '+VA[OUT]+'</b>'+OA[OUT][1]+'<i>Illustrative model. Timing varies between animals.</i>';const s=ST[step];$('cap').innerHTML='<b>'+s.g+': '+s.t+'</b>'+s.d+'<i>'+s.w+'</i>'+(s.x||'')+(window.tu?tu(step):'')}
 const FA=[1,1.08,1.12,.95,.7,.45],RA=[0,.5,.7,.3,0,0],pw=(A,x)=>{const i=Math.min(4,Math.floor(x)),t=x-i;return A[i]+(A[i+1]-A[i])*t},ofn=x=>pw(FA,x),rd=x=>pw(RA,x),CR=new T.Color(0xD07C70),P0=new T.Color(0xF3D2C8),P1=new T.Color(0x7A5F58);
 $('s1').oninput=$('s2').oninput=()=>apply();document.querySelectorAll('[data-a]').forEach(b=>b.onclick=()=>{AP=+b.dataset.a;apply();document.querySelectorAll('[data-a]').forEach(x=>x.classList.toggle('p',x==b))});$('so').oninput=e=>{OUT=+e.target.value;apply()};
 $('rv').onclick=()=>document.querySelector('[data-v=rear]').click();
@@ -530,12 +572,16 @@ addEventListener('keydown',e=>{if(e.target.tagName=='INPUT')return;if(e.key=='Ar
 function rs(){const w=cv.parentNode.clientWidth||320;ren.setSize(w,340,false);cam.aspect=w/340;cam.updateProjectionMatrix()}
 function fr(){if($('d3').hidden){run=false;return}
 for(const k in tg)cu[k]+=(tg[k]-cu[k])*.1;
-sk.color.lerpColors(C0,C1,cu.iod);sk.color.lerp(CR,rd(cu.out));
-const h=cu.hl+cu.hc,f=ofn(cu.out);tL.scale.set(.58*f,.95*f,.6*f);tR.scale.copy(tL.scale);tL.material.color.lerpColors(P0,P1,cu.out/5);tR.material.color.copy(tL.material.color);tL.material.emissive.setRGB(0,.3*h,.26*h);tR.material.emissive.setRGB(0,.3*cu.hl,.26*cu.hl);cL.material.emissive.setRGB(.35*cu.hc,.1*cu.hc,0);
+sk.color.lerpColors(C0,C1,cu.iod);if(METH)sk.color.lerp(CD,cu.dk);else sk.color.lerp(CR,rd(cu.out));
+const h=cu.hl+cu.hc,f=METH?1:ofn(cu.out);tL.scale.set(.58*f,.95*f,.6*f);tR.scale.copy(tL.scale);if(METH)tL.material.color.lerpColors(P0,CD,cu.dk);else tL.material.color.lerpColors(P0,P1,cu.out/5);tR.material.color.copy(tL.material.color);tL.material.emissive.setRGB(0,.3*h,.26*h);tR.material.emissive.setRGB(0,.3*cu.hl,.26*cu.hl);cL.material.emissive.setRGB(.35*cu.hc,.1*cu.hc,0);
 const px=-.62-.25*cu.push;tL.position.x=pL.position.x=cL.position.x=GL.position.x=px;
 bL.position.set(px,cu.ll,0);bL.scale.set(cu.bl,1,cu.bl);bL.visible=cu.bl>.02;bR.position.set(.62,cu.lr,0);bR.scale.set(cu.br,1,cu.br);bR.visible=cu.br>.02;
 B.rotation.y=cu.rot;B.visible=cu.bo>.02;B.scale.setScalar(Math.max(cu.bo,.001));B.position.set(cu.x,cu.ly,0);
 jl.position.x=hl.position.x=-cu.gap;jr.position.x=hr.position.x=cu.gap;
+const fl=cu.fall,w2=METH==2?-1:1;SL.scale.setScalar(METH?pw([1,1.05,.85,.7,.55,.55],cu.out):1);SL.position.set(.25*fl*w2,-1.9*fl,0);SL.rotation.z=.6*fl*w2;
+RG.visible=METH>0&&cu.rg>.02;RG.position.y=cu.ryy;RG.scale.set(cu.rsc,cu.rsc,1);
+EL.visible=METH>0&&cu.eo>.02;EL.position.y=cu.ryy+cu.ey;EL.scale.setScalar(Math.max(cu.eo,.001));
+WD.visible=METH>0&&fl>.5;BD.visible=METH==2&&cu.cb>.5;CJ.visible=METH==2&&cu.cv>.02;CJ.scale.setScalar(Math.max(cu.cv,.001));CJ.children.forEach(o=>{o.position.z=o.userData.z*cu.cgap});
 G.rotation.set(cu.rx,cu.ry,0);cam.position.set(0,.5,cu.d);cam.lookAt(0,cu.ty,0);ren.render(sc,cam);requestAnimationFrame(fr)}
 function tgl(a,b,on){b.classList.toggle('p',!on);a.classList.toggle('p',on)}
 $('v3').onclick=()=>{$('S').style.display='none';$('d3').hidden=false;tgl($('v3'),$('v2'),true);rs();if(!run){run=true;fr()}};
@@ -546,7 +592,7 @@ cv.onpointerdown=e=>{drag=[e.clientX,e.clientY];cv.setPointerCapture(e.pointerId
 cv.onpointermove=e=>{if(!drag)return;tg.ry+=(e.clientX-drag[0])*.01;tg.rx=Math.max(-.6,Math.min(.9,tg.rx+(e.clientY-drag[1])*.006));drag=[e.clientX,e.clientY]};
 cv.onpointerup=()=>{drag=null};
 addEventListener('resize',()=>{if(!$('d3').hidden)rs()});
-window.set3D=n=>{step=n;apply()};set3D(i);Object.assign(cu,tg);
+window.setMeth=m=>{METH=m;apply()};window.set3D=n=>{step=n;apply()};set3D(i);Object.assign(cu,tg);
 })();
 (function(){
 if(!window.THREE){$('a3').disabled=true;return}
@@ -607,10 +653,10 @@ addEventListener('hashchange',()=>setView(location.hash.slice(1)));
 const b=document.querySelector('.brand');b.style.cursor='pointer';b.onclick=()=>setView('home');
 const SV=b=>`<svg viewBox='0 0 64 64' aria-hidden='true' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>${b}</svg>`;
 const B5=SV(`<path d='M32 44L18 6M32 44L46 6'/><rect x='22' y='44' width='9' height='14' rx='1'/><rect x='33' y='44' width='9' height='14' rx='1'/>`);
-const IC=[SV(`<rect x='6' y='30' width='28' height='10' rx='2'/><path d='M34 35h14M6 35H2M14 30v-7h12v7'/><rect x='44' y='10' width='14' height='22' rx='2'/><path d='M44 18h14'/>`),SV(`<ellipse cx='34' cy='38' rx='13' ry='16' transform='rotate(-12 34 38)'/><circle cx='40' cy='16' r='7'/><path d='M30 52l-10 6M40 53l12 5M24 38l-12 4'/><path d='M8 46c6 6 16 8 24 4' stroke='#C9791B'/>`),SV(`<rect x='14' y='10' width='34' height='46' rx='3'/><path d='M24 6h14v8H24zM22 26h20M22 34h20M22 42h12'/>`),SV(`<path d='M26 8h12v8l6 8v30a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3V24l6-8z'/><path d='M20 38h24v16a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z' fill='#C9791B' stroke='none'/>`),SV(`<rect x='20' y='16' width='24' height='38' rx='3'/><path d='M24 16V8h16v8M20 30h24'/><path d='M20 30h24v21a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z' fill='currentColor' opacity='.25' stroke='none'/>`),B5,B5];
-const PH=['tetanus-vaccine.jpg','restraint.jpg','gloves-record-sheet.jpg','antiseptic.jpg','local-anesthetic.jpg','burdizzo.jpg','burdizzo.jpg'],ph=k=>`<img class='ph' src='images/${PH[k]}' alt='${NM[k]}' loading='lazy' onerror='this.remove()'>`;
-const NM=['Tetanus vaccine','Restraint','Gloves and record sheet','Antiseptic','Local anesthetic and analgesic','Burdizzo','Burdizzo'],TS=[[1,2],[3,2],[2,4],[5],[5],[5]];
-window.tu=n=>`<div class='tu'><span>Tools in this step</span>${TS[n].map(k=>`<figure><div class='ti'>${IC[k]}${ph(k)}</div><figcaption>${NM[k]}</figcaption></figure>`).join('')}</div>`;
+const IC=[SV(`<rect x='6' y='30' width='28' height='10' rx='2'/><path d='M34 35h14M6 35H2M14 30v-7h12v7'/><rect x='44' y='10' width='14' height='22' rx='2'/><path d='M44 18h14'/>`),SV(`<ellipse cx='34' cy='38' rx='13' ry='16' transform='rotate(-12 34 38)'/><circle cx='40' cy='16' r='7'/><path d='M30 52l-10 6M40 53l12 5M24 38l-12 4'/><path d='M8 46c6 6 16 8 24 4' stroke='#C9791B'/>`),SV(`<rect x='14' y='10' width='34' height='46' rx='3'/><path d='M24 6h14v8H24zM22 26h20M22 34h20M22 42h12'/>`),SV(`<path d='M26 8h12v8l6 8v30a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3V24l6-8z'/><path d='M20 38h24v16a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z' fill='#C9791B' stroke='none'/>`),SV(`<rect x='20' y='16' width='24' height='38' rx='3'/><path d='M24 16V8h16v8M20 30h24'/><path d='M20 30h24v21a3 3 0 0 1-3 3H23a3 3 0 0 1-3-3z' fill='currentColor' opacity='.25' stroke='none'/>`),B5,B5,SV(`<path d='M18 6l10 30M46 6L36 36'/><path d='M28 36l-3 14M36 36l3 14'/><ellipse cx='32' cy='52' rx='13' ry='5' stroke='#C9791B'/>`),SV(`<circle cx='32' cy='32' r='15' stroke='#C9791B' stroke-width='5'/>`)];
+const PH=['tetanus-vaccine.jpg','restraint.jpg','gloves-record-sheet.jpg','antiseptic.jpg','local-anesthetic.jpg','burdizzo.jpg','burdizzo.jpg','elastrator.jpg','rubber-ring.jpg'],ph=k=>`<img class='ph' src='images/${PH[k]}' alt='${NM[k]}' loading='lazy' onerror='this.remove()'>`;
+const NM=['Tetanus vaccine','Restraint','Gloves and record sheet','Antiseptic','Local anesthetic and analgesic','Burdizzo','Burdizzo','Elastrator pliers','Rubber ring'],TS=[[1,2],[3,2],[2,4],[5],[5],[5]];
+window.tu=n=>`<div class='tu'><span>Tools in this step</span>${(window.TSX||TS)[n].map(k=>`<figure><div class='ti'>${IC[k]}${ph(k)}</div><figcaption>${NM[k]}</figcaption></figure>`).join('')}</div>`;
 document.querySelectorAll('.flow li').forEach((li,k)=>li.querySelector('.n').insertAdjacentHTML('afterend',`<div class='pic'>${IC[k]}${ph(k)}</div>`));
 const bg=document.querySelector('.flow li:nth-child(6)>div:nth-child(3)');if(bg)bg.insertAdjacentHTML('beforeend',`<img class='big' src='images/burdizzo.jpg' alt='Burdizzo bloodless castrator' loading='lazy' onerror='this.remove()'>`);
 const RW=`<svg viewBox='0 0 120 80' aria-hidden='true'>`;
@@ -618,7 +664,7 @@ ST[0].x=`<p class='rsn'><b>How restraint is done.</b> Choose the method by size 
 <div>${RW}<circle cx='26' cy='14' r='8' fill='#D9B8A6'/><rect x='14' y='24' width='24' height='40' rx='9' fill='#5B7D78'/><ellipse cx='58' cy='46' rx='13' ry='19' fill='#EDE7D6' stroke='#8C8672' transform='rotate(-14 58 46)'/><circle cx='66' cy='22' r='7' fill='#EDE7D6' stroke='#8C8672'/><path d='M62 60l24 4M64 52l24-6' stroke='#8C8672' stroke-width='4' stroke-linecap='round'/></svg><b>Lamb held sitting</b>The assistant holds the lamb on its rump with its back against the chest or lap, head and shoulders tucked under one arm, hind legs held apart so the scrotum faces the operator (Ref 8).</div>
 <div>${RW}<path d='M18 64v14M28 64v14' stroke='#5B7D78' stroke-width='8'/><rect x='8' y='6' width='22' height='58' rx='9' fill='#5B7D78'/><ellipse cx='58' cy='46' rx='17' ry='22' fill='#EDE7D6' stroke='#8C8672' transform='rotate(-20 58 46)'/><circle cx='70' cy='20' r='8' fill='#EDE7D6' stroke='#8C8672'/><path d='M64 62l30 4M68 54l30-6' stroke='#8C8672' stroke-width='5' stroke-linecap='round'/></svg><b>Adult sheep: tipped onto the rump</b>One hand under the jaw, one over the rump. Turn the head away and rotate the body until the animal sits on its rump with its back against your legs. Large rams may need two people (Refs 8, 9).</div>
 <div>${RW}<path d='M4 24h112M4 34h112' stroke='#8C8672' stroke-width='3'/><ellipse cx='60' cy='48' rx='28' ry='14' fill='#EDE7D6' stroke='#8C8672'/><circle cx='94' cy='40' r='7' fill='#EDE7D6' stroke='#8C8672'/><path d='M42 58v16M54 60v16M70 60v16M80 58v16' stroke='#8C8672' stroke-width='4' stroke-linecap='round'/><path d='M94 40l14-8' stroke='#C9791B' stroke-width='2'/></svg><b>Standing: halter, rail or crush</b>When facilities allow, a halter with the animal held against a rail or in a crush keeps it standing, with an assistant at the head (Ref 9).</div></div><p class='rsn'>Schematic drawings, not to scale. Keep the animal calm, supported and breathing freely.</p>`;
-const UF='https://visgar.vetmed.ufl.edu/en_ovirep/castration/castration.html',MD={steps:[['Photos','Castration photos, UF Visual Guide to Ovine Reproduction',UF]],tools:[['Photos','Burdizzo clamp and elastrator images (calves), Ontario','https://www.ontario.ca/page/castration-calves']],methods:[['Photos','Burdizzo, banding at 2 weeks and 4 weeks, UF Visual Guide',UF],['Video','How to castrate in sheep and goats by banding (YouTube, listed in the Virginia Tech Extension publication; I have not viewed it)','https://www.youtube.com/watch?v=V84x00xjlqk'],['Photo','Lamb after combined Burdizzo and rubber ring castration, University of Edinburgh','https://www.link.vet.ed.ac.uk/animalpain/Pages/Imagepages/ImagelambSS2.htm']],compare:[['Reference page','AHDB comparison of lamb castration methods','https://ahdb.org.uk/knowledge-library/lamb-castration-methods']]};
+const UF='https://visgar.vetmed.ufl.edu/en_ovirep/castration/castration.html',MD={steps:[['Photos','Castration photos, UF Visual Guide to Ovine Reproduction',UF]],anatomy:[['Video','Anatomy video (YouTube)','https://youtu.be/SzY-xZDt9P0?si=cMWJO91KRGDJdvbI']],tools:[['Video','Burdizzo instrument video (YouTube)','https://youtu.be/EltY-pfaZEM']],methods:[['Photos','Burdizzo, banding at 2 weeks and 4 weeks, UF Visual Guide',UF],['Video','How to castrate in sheep and goats by banding (YouTube, listed in the Virginia Tech Extension publication; I have not viewed it)','https://www.youtube.com/watch?v=V84x00xjlqk'],['Photo','Lamb after combined Burdizzo and rubber ring castration, University of Edinburgh','https://www.link.vet.ed.ac.uk/animalpain/Pages/Imagepages/ImagelambSS2.htm']],compare:[['Reference page','AHDB comparison of lamb castration methods','https://ahdb.org.uk/knowledge-library/lamb-castration-methods']]};
 Object.keys(MD).forEach(id=>{const p=$(id).querySelector('.pg');if(p)p.insertAdjacentHTML('beforebegin',`<p class='media'>🖇️ <b>Photos and videos</b><br>${MD[id].map(m=>`${m[0]}: <a href='${m[2]}' target='_blank' rel='noopener'>${m[1]}</a>`).join('<br>')}</p>`)});
 document.querySelectorAll('.toc a b').forEach((b,k)=>b.textContent=k+1);
 show(i);
@@ -679,6 +725,51 @@ cs+=(st-cs)*.08;MS.forEach((m,k)=>{m.g.visible=!fm||fm==k+1;m.u(cs);m.g.rotation
 const tx=fm?MS[fm-1].g.position.x:0,td=fm?7.5:Math.max(15,22/cam.aspect);cx+=(tx-cx)*.08;cd+=(td-cd)*.08;cam.position.set(cx,.4,cd);cam.lookAt(cx,-.9,0);ren.render(sc,cam)}requestAnimationFrame(fr)}
 info();fr();
 })();
+(function(){
+const fs=[...document.querySelectorAll('#model .gal figure')];if(!fs.length)return;
+document.querySelectorAll('#model video').forEach(v=>{const s=v.getAttribute('src');if(s&&s.indexOf('data:')==0){try{const bin=atob(s.split(',')[1]),u=new Uint8Array(bin.length);for(let k=0;k<bin.length;k++)u[k]=bin.charCodeAt(k);v.src=URL.createObjectURL(new Blob([u],{type:'video/mp4'}))}catch(e){}}});
+const it=fs.map(f=>{const v=f.querySelector('video'),i=f.querySelector('img');return{v:!!v,src:(v||i).getAttribute('src'),poster:v?v.getAttribute('poster'):'',cap:f.querySelector('figcaption').textContent,step:f.closest('.stage').querySelector('h3').textContent}});
+document.body.insertAdjacentHTML('beforeend',`<div class='lb' id='lb' role='dialog' aria-modal='true' aria-label='Build gallery'><div class='lbt'><b id='lbs'></b><span id='lbn'></span><button id='lbx'>Close</button></div><div class='lbm' id='lbm'></div><p class='lbc' id='lbc'></p><div class='lbp'><i id='lbi'></i></div><div class='lbb'><button id='lbp'>Previous</button><button id='lba'>Autoplay</button><button id='lbq'>Next</button></div><div class='lbth' id='lbth'></div></div>`);
+$('lbth').innerHTML=it.map((x,j)=>`<button data-j='${j}' aria-label='Go to item ${j+1}'><img src='${x.v?x.poster:x.src}' alt=''></button>`).join('');
+let k=0,tm=null,auto=false;
+const lb=$('lb');
+function sa(on){auto=on;$('lba').textContent=on?'Pause':'Autoplay';$('lba').classList.toggle('p',on)}
+function nx(){if(k<it.length-1)show(k+1);else sa(false)}
+function show(n){k=(n+it.length)%it.length;const x=it[k];clearTimeout(tm);
+const lm=$('lbm');lm.innerHTML='';
+if(x.v){const v=document.createElement('video');v.muted=true;v.defaultMuted=true;v.playsInline=true;v.controls=true;v.poster=x.poster;v.src=x.src;v.onerror=()=>{$('lbc').textContent='This video cannot play in this preview. It plays on the published site.';if(auto)tm=setTimeout(nx,2500)};lm.appendChild(v);const pp=v.play();if(pp&&pp.catch)pp.catch(()=>{})}else lm.innerHTML=`<img src='${x.src}' alt=''>`;
+$('lbs').textContent=x.step;$('lbn').textContent=(k+1)+' / '+it.length;$('lbc').textContent=x.cap;
+[...$('lbth').children].forEach((c,j)=>c.classList.toggle('on',j==k));
+const bar=$('lbi');bar.style.transition='none';bar.style.width='0';
+if(auto){const v=$('lbm').querySelector('video');if(v){v.onended=nx}else{requestAnimationFrame(()=>requestAnimationFrame(()=>{bar.style.transition='width 4s linear';bar.style.width='100%'}));tm=setTimeout(nx,4000)}}}
+function openLb(n){lb.classList.add('on');document.body.style.overflow='hidden';show(n)}
+function closeLb(){clearTimeout(tm);sa(false);lb.classList.remove('on');$('lbm').innerHTML='';document.body.style.overflow=''}
+fs.forEach((f,j)=>{f.tabIndex=0;f.onclick=()=>openLb(j);f.onkeydown=e=>{if(e.key=='Enter')openLb(j)}});
+$('lbx').onclick=closeLb;$('lbp').onclick=()=>{sa(false);show(k-1)};$('lbq').onclick=()=>{sa(false);show(k+1)};$('lba').onclick=()=>{sa(!auto);show(k)};
+$('lbth').onclick=e=>{const b=e.target.closest('button');if(b){sa(false);show(+b.dataset.j)}};
+lb.onclick=e=>{if(e.target==lb)closeLb()};
+addEventListener('keydown',e=>{if(!lb.classList.contains('on'))return;if(e.key=='Escape')closeLb();else if(e.key=='ArrowRight'){sa(false);show(k+1)}else if(e.key=='ArrowLeft'){sa(false);show(k-1)}else return;e.stopImmediatePropagation()},true);
+const wk=$('wk');if(wk)wk.onclick=()=>{sa(true);openLb(0)};
+const io2=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('#model .stage').forEach(s=>{s.classList.add('mrev');io2.observe(s)});
+})();
+(function(){
+const STB=ST.slice(),v0=STB[0].v,mk=(t,g,d,w)=>({t,g,d,w,v:Object.assign({},v0)});
+const R1=mk('Restrain and examine','Step 1','Restrain the lamb safely. In England the ring is allowed only in lambs aged 7 days or less, and not in the first 24 hours. Feel for both testes and identify the rudimentary teats.','Goal: confirm two descended testes. The ring cannot be used on cryptorchids (Ref 10).');
+const R2=mk('Prepare the elastrator','Step 2','Check that the pliers and a new rubber ring are clean. Load the ring onto the pliers so that it is held open.','Goal: a single-use ring held open, ready to pass over the scrotum (Ref 10).');
+const R3=mk('Draw the testes down','Step 3','Make sure you can feel both testes, and draw them down into the scrotum so that both lie below the place where the ring will sit.','Goal: both testes must be entirely below the ring (Ref 10).');
+const STR=[R1,R2,R3,mk('Apply the ring','Step 4','Pass the open ring over the scrotum and place it at the neck, above both testes. Keep the rudimentary teats outside the ring.','Goal: the ring sits above the testes and traps nothing else; anything trapped wastes away (Ref 10).'),mk('Release and check','Step 5','Release the ring from the pliers so it tightens on the neck of the scrotum. Check again that both testes are below it and the teats are free.','Goal: enough pressure to cut off the blood supply (Ref 10).'),mk('Monitor and record','Step 6','Record the date and watch the lamb. The scrotum and testes drop off in about 2 to 4 weeks: use the Time after castration slider to see the sloughing.','Goal: catch pain, infection and tetanus early; pain relief reduces the pain response (Ref 10).')];
+const STC=[mk('Restrain and examine','Step 1','Restrain the lamb safely. The combined method is used on lambs 1 to 7 days old, not in the first 24 hours. Feel for both testes.','Goal: confirm two descended testes; not for cryptorchids (Ref 10).'),mk('Prepare the elastrator and clamp','Step 2','Check that the pliers, a new ring and the Burdizzo are clean. Load the ring onto the pliers.','Goal: both instruments ready before the lamb is handled (Ref 10).'),R3,mk('Apply and release the ring','Step 4','Place the ring at the neck of the scrotum, above both testes, then release it so it tightens. Keep the teats outside.','Goal: the ring is the first of the two techniques (Ref 10).'),mk('Apply the clamp beside the ring','Step 5','Close the Burdizzo across the full width of the scrotal neck, up to the outer edge of the ring. The two techniques sit side by side.','Goal: the clamp crushes the neck of the scrotum next to the ring (Ref 10).'),mk('Monitor and record','Step 6','Record the date and watch the lamb. The scrotum sloughs as with the ring; use the Time after castration slider.','Goal: catch complications early; fewer pain-related behaviours than ring alone are reported (Ref 10).')];
+STR[0].x=STC[0].x=STB[0].x;
+const TSM=[null,[[1,2],[7,8],[2],[7,8],[7],[2]],[[1,2],[7,8,5],[2],[7,8],[5],[2]]],SS=[STB,STR,STC];
+function setM(m){ST.length=0;ST.push(...SS[m]);window.TSX=TSM[m];setMeth(m);
+$('dt').innerHTML=ST.map((_,k)=>`<button data-k="${k}" title="${ST[k].t}" aria-label="Go to step ${k+1}: ${ST[k].t}">${k+1}</button>`).join('');
+$('s1').closest('.vc').hidden=m>0;$('v2').hidden=m>0;
+document.querySelectorAll('[data-pm]').forEach(b=>b.classList.toggle('p',+b.dataset.pm==m));
+if(m>0)$('v3').click();go(0)}
+document.querySelectorAll('[data-pm]').forEach(b=>b.onclick=()=>setM(+b.dataset.pm));
+})();
+(function(){const b=$('g8b'),c=$('g8');b.onclick=()=>{const o=c.hidden;c.hidden=!o;b.setAttribute('aria-expanded',o);b.querySelector('i').textContent=o?'Hide the model and its build flow':'Open the model and its build flow';dispatchEvent(new Event('resize'))}})();
 </script>
 </body>
 </html>
